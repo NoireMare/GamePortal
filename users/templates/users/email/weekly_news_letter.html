@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+    <h2><a href="{% url 'home_page' %}">MMORPG Portal</a></h2>
+    <h3>Hello, {{ user }}! Take your time to look through the last week`s posts!</h3>
+    <ol>
+    {% for post in posts %}
+        <li><strong><a href="{% url "post_details" post.id %}">{{ post.title|safe }}</a></strong>
+        <p>{{ post.text|safe|truncatewords:60 }}</p></li>
+    {% endfor %}
+    </ol>
+</html>
+

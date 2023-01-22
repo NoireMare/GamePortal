@@ -1,0 +1,57 @@
+{% extends 'GamePortal/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+            <section class="youplay-banner banner-top youplay-banner-parallax full">
+                <div class="image" data-speed="0.4">
+                    <img src="{% static 'images/dark/banner-bg.jpg' %}" alt="" class="jarallax-img">
+                </div>
+                <div class="info">
+                    <div>
+                        <div class="container">
+                            <div class="youplay-login">
+                                <div class="youplay-form text-center">
+                                    <h3 class="text-uppercase">Soldier registration</h3><br>
+                                    <div class="btn-group social-list dib">
+                                        <a class="btn btn-default" title="Share on Facebook" href="#"><i class="fab fa-facebook"></i></a>
+                                        <a class="btn btn-default" href="#" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                                        <a class="btn btn-default" href="#" title="Share on Google Plus"><i class="fab fa-google-plus"></i></a>
+                                    </div>
+                                    {% if form.errors %}
+                                        {% for error in form.errors.values %}
+                                            <div style="color:#D9534F;margin-top: 10px"> {{ error }} </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <form action="{% url 'user_registration' %}" method="POST">
+                                        {% csrf_token %}
+                                        <label class="youplay-input" for="{{ form.first_name.id_for_label }}">
+                                            {{ form.first_name }}
+                                        </label>
+                                        <label class="youplay-input" for="{{ form.last_name.id_for_label }}">
+                                            {{ form.last_name }}
+                                        </label>
+                                        <label class="youplay-input" for="{{ form.username.id_for_label }}">
+                                            {{ form.username }}
+                                        </label>
+                                        <label class="youplay-input" for="{{ form.password1.id_for_label }}">
+                                            {{ form.password1 }}
+                                        </label>
+                                        <label class="youplay-input" for="{{ form.password2.id_for_label }}">
+                                            {{ form.password2 }}
+                                        </label>
+                                        <label class="youplay-input" for="{{ form.email.id_for_label }}">
+                                            {{ form.email }}
+                                        </label>
+                                        <button class="btn btn-default db">Enter Abyss</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- /Banner -->
+
+{% endblock content %}

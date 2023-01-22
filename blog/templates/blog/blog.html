@@ -1,0 +1,156 @@
+{% extends 'GamePortal/base.html' %}
+
+{% load static %}{% load tz %}
+
+{% block content %}
+
+            <section class="youplay-banner banner-top youplay-banner-parallax small">
+                <div class="image" data-speed="0.4">
+                    <img src="{% static 'images/dark/banner-blog-bg.jpg' %}" alt="" class="jarallax-img">
+                </div>
+                <div class="info">
+                    <div>
+                        <div class="container">
+                            <h1 class="h1">Blog</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- /Banner -->
+            <div class="container youplay-news">
+                <!-- Posts List -->
+                <div class="col-md-9">
+                    <!-- Single Posts Block -->
+                    {% if object_list %}
+                    {% for post in object_list %}
+                    <div class="news-one">
+                        <div class="row vertical-gutter">
+                            <div class="col-md-4">
+                                <a href="{% url 'post_details' post.id %}" class="angled-img">
+                                    <div class="img">
+                                        <img src="{{ post.image.url }}" alt=""/>
+                                    </div>
+                                    <div class="youplay-hexagon-rating youplay-hexagon-rating-small" data-max="10" data-size="50" title="9.1 out of 10"><span>9.1</span></div>
+                                </a>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="clearfix">
+                                    <h3 class="h2 pull-left m-0"><a href="{% url 'post_details' post.id %}">{{ post.title|truncatechars:70 }}</a></h3>
+                                    <span class="date pull-right"><i class="fa fa-calendar"></i> {% if post in today_posts %}Today{% else %}{{ post.date.date }}{% endif %}</span>
+                                </div>
+                                <!--<div class="tags">
+                                    <i class="fa fa-tags"></i> <a href="#">Bloodborne</a>, <a href="#">first try</a>, <a href="#">first boss problem</a>, <a href="#">newbie game</a>
+                                </div>-->
+                                <div class="description">
+                                    {{ post.text|safe|truncatewords:35 }}
+                                </div>
+                                <a href="{% url 'post_details' post.id %}" class="btn read-more pull-left">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                        {% else %}
+                        <h4 class="warning">Empty? Oh, my... This is bad. We are already working on it.</h4>
+                    {% endif %}
+                    <!-- /Single Posts Block -->
+                    <!-- Pagination -->
+                    {% if paginator.num_pages > 1 %}
+                    <ul class="pagination">
+                        {% for page in paginator.page_range %}
+                            <li class="{% if page == page_obj.number %}active{% endif %}"><a href="{% url 'posts_per_page' page %}">{{ page }}</a></li>
+                        {% endfor %}
+                        {% if page_obj.number != paginator.num_pages %}
+                        <li><a href="{% if page_obj.has_next %}{% url 'posts_per_page' page_obj.next_page_number %}{% endif %}">Next</a></li>
+                        {% endif %}
+                    </ul>
+                    {% endif %}
+                <!-- /Pagination -->
+                </div>
+                <!-- /News List -->
+                <!-- Right Side -->
+                <div class="col-md-3">
+                    <!-- Side Search -->
+                    <div class="side-block">
+                        <p>Search by News:</p>
+                        <form action="search.html">
+                            <div class="youplay-input">
+                                <input type="text" name="search" placeholder="enter search term">
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /Side Search -->
+                    <!-- Side Categories -->
+                    <div class="side-block">
+                        <h4 class="block-title">Categories</h4>
+                        <ul class="block-content">
+                            {% for category in categories %}
+                                <li><a href="{% url 'posts_by_category' category.id %}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- /Side Categories -->
+                    <!-- Side Popular News -->
+                    <div class="side-block">
+                        <h4 class="block-title">Popular News</h4>
+                        <div class="block-content p-0">
+                            <!-- Single News Block -->
+                            <div class="row youplay-side-news">
+                                <div class="col-xs-3 col-md-4">
+                                    <a href="blog-post-1.html" class="angled-img">
+                                        <div class="img">
+                                            <img src="{% static 'images/dark/game-bloodborne-500x375.jpg' %}" alt="">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-9 col-md-8">
+                                    <h4 class="ellipsis"><a href="blog-post-1.html" title="Bloodborne - First Try!">Bloodborne - First Try!</a></h4>
+                                    <span class="date"><i class="fa fa-calendar"></i> Today</span>
+                                </div>
+                            </div>
+                            <!-- /Single News Block -->
+                            <!-- Single News Block -->
+                            <div class="row youplay-side-news">
+                                <div class="col-xs-3 col-md-4">
+                                    <a href="#" class="angled-img">
+                                        <div class="img">
+                                            <img src="{% static 'images/dark/game-middle-eart-shadow-of-mordor-500x375.jpg' %}" alt="">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-9 col-md-8">
+                                    <h4 class="ellipsis"><a href="#" title="Whats New in Middle-earth">Whats New in Middle-earth</a></h4>
+                                    <span class="date"><i class="fa fa-calendar"></i> February 2, 2020</span>
+                                </div>
+                            </div>
+                            <!-- /Single News Block -->
+                            <!-- Single News Block -->
+                            <div class="row youplay-side-news">
+                                <div class="col-xs-3 col-md-4">
+                                    <a href="#" class="angled-img">
+                                        <div class="img">
+                                            <img src="{% static 'images/dark/game-diablo-iii-500x375.jpg' %}" alt="">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xs-9 col-md-8">
+                                    <h4 class="ellipsis"><a href="#" title="Let's Grind Diablo III">Let's Grind Diablo III</a></h4>
+                                    <span class="date"><i class="fa fa-calendar"></i> January 18, 2020</span>
+                                </div>
+                            </div>
+                            <!-- /Single News Block -->
+                        </div>
+                    </div>
+                    <!-- /Side Popular News -->
+                    <!-- Our Twitter -->
+                    <div class="side-block">
+                        <h4 class="block-title">Our Twitter</h4>
+                        <div class="block-content">
+                            <div class="youplay-twitter" data-twitter-user-name="nkdevv" data-twitter-count="3" data-twitter-hide-replies="false"></div>
+                        </div>
+                    </div>
+                    <!-- /Our Twitter -->
+                </div>
+                <!-- /Right Side -->
+            </div>
+
+{% endblock content %}

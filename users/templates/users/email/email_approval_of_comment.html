@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+    <h1><a href="{% url 'home_page' %}">MMORPG Portal</a></h1>
+    <h3>Your comment was approved by author!</h3>
+    <p>Hello, {{ form.0 }}! {{ form.3.author }} has approved your comment to post
+        <a href="{% url "post_details" form.3.id %}">"{{ form.3.title }}"</a>:</p>
+    <blockquote>"{{ form.2 }}"</blockquote>
+</html>
+

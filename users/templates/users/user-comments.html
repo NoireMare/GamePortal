@@ -1,0 +1,72 @@
+{% extends 'GamePortal/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    {% include 'users/base-user-sections.html' %}
+
+            <!-- /Banner -->
+    <div class="container youplay-content" xmlns="http://www.w3.org/1999/html">
+        <div class="row">
+            <div class="col-md-11">
+                <h3 class="mt-0 mb-20">Comments</h3>
+                <form action="" method="get" class="form-filter">
+                    {{ filter.form }}
+                    <button type="submit" class="btn btn-default db">Search</button>
+                </form>
+                <br>
+                <table class="table table-bordered">
+                    <tbody>
+                        {% if posts %}
+                        <tr>
+                            <td>Category</td>
+                            <td>Post title</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        {% for post in posts %}
+                            <tr>
+                                <td>
+                                    <p><a href="{% url 'posts_by_category' post.category.id %}">{{ post.category.name }} </a></p>
+                                </td>
+                                <td>
+                                    <p><a href="{% url 'post_details' post.id %}">{{ post.date.date }}: {{ post.title }}</a></p>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            {% for comment in comments %}
+                                {% if comment.post.id == post.id %}
+                                <tr>
+                                    <td class="align-right va-m text-info">{{ comment.user.username }} on {{ comment.date.date }}</td>
+                                    <td class="va-m text-info"> {{ comment.text }}</td>
+                                    <td class="align-center">
+                                    {% if not comment.is_approved %}
+                                        <form action="{% url 'approve_comment' comment.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-default db">Approve</button>
+                                        </form>
+                                        {% else %}
+                                            <p class="text-success">Approved</p>
+                                        {% endif %}
+                                    </td>
+                                    <td class="align-center">
+                                        <form action="{% url 'delete_comment' comment.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-default db">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                        {% else %}
+                            I`ve got nothing to show you. What a shame...
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

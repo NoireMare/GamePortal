@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<!--
+    Name: Youplay - Game Template based on Bootstrap
+    Version: 3.3.2
+    Author: nK
+    Website: https://nkdev.info/
+    Purchase: https://1.envato.market/youplayhtmlinfo
+    Support: https://nk.ticksy.com/
+    License: You must have a valid license purchased only from ThemeForest (the above link) in order to legally use the theme for your project.
+    Copyright 2022.
+-->
+<html lang="en">
+
+{% load static %}
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% block title %}<title>Youplay | Gaming HTML Template</title>{% endblock title %}
+        <meta name="description" content="Youplay - Gaming HTML Template based on Bootstrap">
+        <meta name="keywords" content="gaming, game, community, template, html, bootstrap, webpack">
+        <meta name="author" content="nK">
+        <link rel="icon" type="image/png" href="{% static 'images/dark/icon.png' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- START: Styles -->
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="{% static 'vendor/bootstrap/dist/css/bootstrap.min.css' %}" />
+        <!-- Flickity -->
+        <link rel="stylesheet" href="{% static 'vendor/flickity/dist/flickity.min.css' %}" />
+        <!-- Magnific Popup -->
+        <link rel="stylesheet" href="{% static 'vendor/magnific-popup/dist/magnific-popup.css' %}" />
+        <!-- Revolution Slider -->
+        <link rel="stylesheet" href="{% static 'vendor/slider-revolution/css/settings.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/slider-revolution/css/layers.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/slider-revolution/css/navigation.css' %}">
+        <!-- Bootstrap Sweetalert -->
+        <link rel="stylesheet" href="{% static 'vendor/bootstrap-sweetalert/dist/sweetalert.css' %}" />
+        <!-- Social Likes -->
+        <link rel="stylesheet" href="{% static 'vendor/social-likes/dist/social-likes_flat.css' %}" />
+        <!-- FontAwesome -->
+        <script defer src="{% static 'vendor/fontawesome-free/js/all.js' %}"></script>
+        <script defer src="{% static 'vendor/fontawesome-free/js/v4-shims.js' %}"></script>
+        <!-- Youplay -->
+        <link rel="stylesheet" href="{% static 'css/youplay.css' %}">
+        <!-- RTL (uncomment this to enable RTL support) -->
+        <!-- <link rel="stylesheet" href="assets/css/youplay-rtl.min.css" /> -->
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <!-- END: Styles -->
+        <!-- jQuery -->
+        <script src="{% static 'vendor/jquery/dist/jquery.min.js' %}"></script>
+    </head>
+    <body>
+        <!-- Preloader -->
+        <div class="page-preloader preloader-wrapp">
+            <img src="{% static 'images/logo-light.png' %}" alt="">
+            <div class="preloader"></div>
+        </div>
+        <!-- /Preloader -->
+        <!-- Navbar -->
+        <nav class="navbar-youplay navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="off-canvas" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">MMORPG Portal</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'home_page' %}">
+                        <!--<img src="{% static 'images/dark/logo.png' %}" alt="">-->
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class=" dropdown dropdown-hover">
+                            <a href="{% url 'home_page' %}"> Home
+                                <span class="label">pit</span>
+                            </a>
+                            <!--<div class="dropdown-menu">
+                                <ul role="menu">
+                                    <li>
+                                        <a href="store-1.html"> Store Style 1 </a>
+                                    </li>
+                                    <li>
+                                        <a href="store-2.html"> Store Style 2 </a>
+                                    </li>
+                                    <li>
+                                        <a href="cart.html"> Cart </a>
+                                    </li>
+                                </ul>
+                                <ul role="menu">
+                                    <li>
+                                        <a href="store-product-1.html"> Product Style1 </a>
+                                    </li>
+                                    <li>
+                                        <a href="store-product-2.html"> Product Style 2 </a>
+                                    </li>
+                                    <li>
+                                        <a href="checkout.html"> Checkout </a>
+                                    </li>
+                                </ul>
+                            </div>-->
+                        </li>
+                        <li class=" dropdown dropdown-hover">
+                            <a href="{% url 'posts_list' %}"> Blog <!--<span class="caret"></span>-->
+                                <span class="label">news</span>
+                            </a>
+                            <!--<div class="dropdown-menu">
+                                <ul role="menu">
+                                    <li>
+                                        <a href="blog-1.html"> Blog Style 1 </a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-2.html"> Blog Style 2 </a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-3.html"> Blog Style 3 </a>
+                                    </li>
+                                </ul>
+                                <ul role="menu">
+                                    <li>
+                                        <a href="blog-post-1.html"> Blog Post 1 </a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-post-2.html"> Blog Post 2 </a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-post-3.html"> Blog Post 3 </a>
+                                    </li>
+                                </ul>
+                            </div>-->
+                        </li>
+                        <!--<li class=" dropdown dropdown-hover">
+                            <a href="components.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Features <span class="caret"></span>
+                                <span class="label">full list</span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <ul role="menu">
+                                    <li>
+                                        <a href="forums.html"> Forums </a>
+                                    </li>
+                                    <li>
+                                        <a href="forums-topics.html"> Forums Topics </a>
+                                    </li>
+                                    <li>
+                                        <a href="forums-single-topic.html"> Forums Single Topic </a>
+                                    </li>
+                                    <li>
+                                        <a href="matches-list.html"> Matches List </a>
+                                    </li>
+                                    <li>
+                                        <a href="match.html"> Match </a>
+                                    </li>
+                                    <li>
+                                        <a href="match-2.html"> Match with Maps </a>
+                                    </li>
+                                    <li>
+                                        <a href="login.html"> Login </a>
+                                    </li>
+                                </ul>
+                                <ul role="menu">
+                                    <li>
+                                        <a href="widgets.html"> Widgets <span class="badge bg-default">New</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="components.html"> Components </a>
+                                    </li>
+                                    <li>
+                                        <a href="coming-soon.html"> Coming Soon </a>
+                                    </li>
+                                    <li>
+                                        <a href="contact.html"> Contact Us </a>
+                                    </li>
+                                    <li>
+                                        <a href="search.html"> Search </a>
+                                    </li>
+                                    <li>
+                                        <a href="404.html"> 404 </a>
+                                    </li>
+                                    <li>
+                                        <a href="blank.html"> Blank </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>-->
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'user_profile' user.id %}">
+                                {{ user.username }} <span class="badge bg-default">8</span>
+                                <span class="caret"></span>
+                                <span class="label">user</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <a class="search-toggle" href="search.html">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                        <!--<li class="dropdown dropdown-hover dropdown-cart">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <i class="fa fa-shopping-cart"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="row youplay-side-news">
+                                    <div class="col-xs-3 col-md-4">
+                                        <a href="#" class="angled-img">
+                                            <div class="img">
+                                                <img src="{% static 'images/dark/game-bloodborne-500x375.jpg' %}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-9 col-md-8">
+                                        <a href="#" class="pull-right mr-10"><i class="fa fa-times"></i></a>
+                                        <h4 class="ellipsis"><a href="#">Bloodborne</a></h4>
+                                        <span class="quantity">1 × <span class="amount">$50.00</span></span>
+                                    </div>
+                                </div>
+                                <div class="row youplay-side-news">
+                                    <div class="col-xs-3 col-md-4">
+                                        <a href="#" class="angled-img">
+                                            <div class="img">
+                                                <img src="{% static 'images/dark/game-kingdoms-of-amalur-reckoning-500x375.jpg' %}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-9 col-md-8">
+                                        <a href="#" class="pull-right mr-10"><i class="fa fa-times"></i></a>
+                                        <h4 class="ellipsis"><a href="#">Kingdoms of Amalur</a></h4>
+                                        <span class="quantity">1 × <span class="amount">$20.00</span></span>
+                                    </div>
+                                </div>
+                                <div class="ml-20 mr-20 pull-right"><strong>Subtotal:</strong> <span class="amount">$70.00</span></div>
+                                <div class="btn-group pull-right m-15">
+                                    <a href="#" class="btn btn-default btn-sm">View Cart</a>
+                                    <a href="#" class="btn btn-default btn-sm">Checkout</a>
+                                </div>
+                            </div>
+                        </li>-->
+                        {% if not user.is_authenticated %}
+                        <li>
+                            <a href="{% url "log_in" %}">
+                                <i class="fa fa-user"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- /Navbar -->
+        <!-- Registration Form -->
+        <!--<div id="nav-registration" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Register</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{% url 'user_registration' %}" method="post">
+
+                            <div>
+                                <p>First name:</p>
+                                {{ form.first_name }}
+                                <p>Last name:</p>
+                                {{ form.last_name }}
+                                <p>Username:</p>
+                                {{ form.username }}
+                                <p>E-mail:</p>
+                                {{ form.email }}
+                                <p>Password:</p>
+                                {{ form.password1 }}
+                                <p>Password confirmation:</p>
+                                {{ form.password2 }}
+                                <p>
+                                    <em>A password will be e-mailed to you.</em>
+                                </p>
+                                <button class="btn ml-3" name="submit">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!-- /Registration Form -->
+        <div class="content-wrap">
+
+        {% block content %} {% endblock content %}
+
+        <!-- Footer -->
+        <footer class="youplay-footer youplay-footer-parallax">
+                <!--<div class="image" data-speed="0.4" data-img-position="50% 0%">
+                    <img src="{% static 'images/dark/banner-bt.jpg' %}" alt="" class="jarallax-img">
+                </div>-->
+                <div class="wrapper">
+                    <!-- Social Buttons -->
+                    <div class="social">
+                        <div class="container">
+                            <h3>Connect socially with us</h3>
+                            <div class="social-icons">
+                                <div class="social-icon">
+                                    <a href="#">
+                                        <i class="fab fa-discord"></i>
+                                        <span>Subscribe to Discord</span>
+                                    </a>
+                                </div>
+                                <div class="social-icon">
+                                    <a href="#">
+                                        <i class="fab fa-twitch"></i>
+                                        <span>Watch on Twitch</span>
+                                    </a>
+                                </div>
+                                <div class="social-icon">
+                                    <a href="#">
+                                        <i class="fab fa-youtube"></i>
+                                        <span>Watch on Youtube</span>
+                                    </a>
+                                </div>
+                                <div class="social-icon">
+                                    <a href="#">
+                                        <i class="fab fa-twitter-square"></i>
+                                        <span>Follow on Twitter</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Social Buttons -->
+                    <!-- Copyright -->
+                    <div class="copyright">
+                        <div class="container">
+                            <p>2020 &copy; <strong>nK</strong>. All rights reserved</p>
+                        </div>
+                    </div>
+                    <!-- /Copyright -->
+                </div>
+            </footer>
+        <!-- /Footer -->
+        </div>
+        <!-- Search Block -->
+        <div class="search-block">
+            <a href="#" class="search-toggle">
+                <i class="fa fa-times"></i>
+            </a>
+            <form action="search.html">
+                <div class="youplay-input">
+                    <input type="text" name="search" placeholder="Search...">
+                </div>
+            </form>
+        </div>
+        <!-- /Search Block -->
+        <!-- START: Scripts -->
+        <!-- Object Fit Polyfill -->
+        <script src="{% static 'vendor/object-fit-images/dist/ofi.min.js' %}"></script>
+        <!-- jQuery -->
+        <script src="{% static 'vendor/jquery/dist/jquery.min.js' %}"></script>
+        <!-- Hexagon Progress -->
+        <script src="{% static 'vendor/HexagonProgress/jquery.hexagonprogress.min.js' %}"></script>
+        <!-- Bootstrap -->
+        <script src="{% static 'vendor/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        <!-- Jarallax -->
+        <script src="{% static 'vendor/jarallax/dist/jarallax.min.js' %}"></script>
+        <!-- Flickity -->
+        <script src="{% static 'vendor/flickity/dist/flickity.pkgd.min.js' %}"></script>
+        <!-- jQuery Countdown -->
+        <script src="{% static 'vendor/jquery-countdown/dist/jquery.countdown.min.js' %}"></script>
+        <!-- Moment.js -->
+        <script src="{% static 'vendor/moment/min/moment.min.js' %}"></script>
+        <script src="{% static 'vendor/moment-timezone/builds/moment-timezone-with-data.min.js' %}"></script>
+        <!-- Magnific Popup -->
+        <script src="{% static 'vendor/magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+        <!-- Revolution Slider -->
+        <script src="{% static 'vendor/slider-revolution/js/jquery.themepunch.tools.min.js' %}"></script>
+        <script src="{% static 'vendor/slider-revolution/js/jquery.themepunch.revolution.min.js' %}"></script>
+        <!-- ImagesLoaded -->
+        <script src="{% static 'vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+        <!-- Isotope -->
+        <script src="{% static 'vendor/isotope-layout/dist/isotope.pkgd.min.js' %}"></script>
+        <!-- Bootstrap Validator -->
+        <script src="{% static 'vendor/bootstrap-validator/dist/validator.min.js' %}"></script>
+        <!-- Bootstrap Sweetalert -->
+        <script src="{% static 'vendor/bootstrap-sweetalert/dist/sweetalert.min.js' %}"></script>
+        <!-- Social Likes -->
+        <script src="{% static 'vendor/social-likes/dist/social-likes.min.js' %}"></script>
+        <!-- Youplay -->
+        <script src="{% static 'js/youplay.min.js' %}"></script>
+        <script src="{% static 'js/youplay-init.js' %}"></script>
+        <!-- END: Scripts -->
+    </body>
+</html>

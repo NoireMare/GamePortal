@@ -1,0 +1,47 @@
+{% extends 'GamePortal/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    {% include 'users/base-user-sections.html' %}
+
+            <!-- /Banner -->
+    <div class="container youplay-content" xmlns="http://www.w3.org/1999/html">
+                <div class="row">
+                    <div class="col-md-11">
+                        <h3 class="mt-0 mb-20">Posts</h3>
+                        <table class="table table-bordered">
+                            <tbody>
+                                {% if posts %}
+                                {% for post in posts %}
+                                <tr>
+                                    <td>
+                                        <p>{{ post.date }}</p>
+                                    </td>
+                                    <td>
+                                        <p><a href="{% url 'post_details' post.id %}">{{ post.title }}</a></p>
+                                    </td>
+                                    <td>
+                                        <p><a href="{% url 'posts_by_category' post.category.id %}">{{ post.category }}</a></p>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'change_post' post.id %}"><button type="submit" class="btn btn-default db">Edit</button></a>
+                                    </td>
+                                    <td>
+                                        <form action="{% url 'delete_post' post.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-default db">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                {% else %}
+                                    You still haven`t added any posts to your account. You are better to think over your behaviour. :)
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+{% endblock content %}
